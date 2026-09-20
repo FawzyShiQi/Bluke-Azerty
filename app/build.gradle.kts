@@ -13,11 +13,11 @@ android {
   compileSdk { version = release(36) { minorApiLevel = 1 } }
 
   defaultConfig {
-    applicationId = "dev.arnv.bluke"
+    applicationId = "dev.arnv.bluke.azerty"
     minSdk = 28
     targetSdk = 36
     versionCode = 9
-    versionName = "1.0.8"
+    versionName = "1.0.8-azerty"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
