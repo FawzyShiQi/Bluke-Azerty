@@ -31,7 +31,7 @@ fun KeyboardView(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        val keyboardRows = KeyboardLayouts.getLayout(layoutType)
+        val keyboardRows = AzertyLayout.apply(KeyboardLayouts.getLayout(layoutType))
         val allKeys = keyboardRows.flatten()
 
         val totalLayoutWidthInUnits = allKeys.maxOfOrNull { it.x + it.widthRatio } ?: 15.0f
@@ -143,7 +143,7 @@ fun KeyboardView(
 
                     val isShiftActive = activePressedKeys.contains(0xE1) || activePressedKeys.contains(0xE5)
                     val isUppercase = isCapsLockActive xor isShiftActive
-                    val isAlphabetic = key.legend.length == 1 && key.legend[0].isLetter()
+                    val isAlphabetic = key.shiftedLegend.isEmpty() && key.legend.length == 1 && key.legend[0].isLetter()
                     val displayLegend = if (isAlphabetic) {
                         if (isUppercase) key.legend.uppercase() else key.legend.lowercase()
                     } else {
